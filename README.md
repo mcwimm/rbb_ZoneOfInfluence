@@ -1,31 +1,23 @@
-# Reusable Building Blocks
-
-This is a template repository for the Reusable Building Blocks (RBB) Initiative. (TODO: insert reference to RBB position
-paper or living document). 
-
-> RBBs are submodels that describe processes relevant for a broad range of ABMs in a certain application domain, for
-> example plant competition in vegetation models or reinforcement learning in a behavioral model.
-
-This is still a work in progress, and we are grateful for any comment or suggestions about
-the following two-tier structure for RBBs. *Tier 1 requirements* are intended to set an initial low bar for
-submission and sharing so that good ideas can be shared and improved upon. *Tier 2 requirements* establish a rigorous,
-tested baseline for RBBs that can be peer reviewed and published in a trusted digital repository with a DOI similar to a
-journal submission.
-
-
-# Tier 1 Requirements
-
+# Reusable Building Block
 ## Name
 
-The RBB's name should be self-explanatory and short.
+Zone-of-Influence (ZOI)
 
 ## Purpose
 
-A narrative description that addresses the following:
+The Zone-Of-Influence Reusable Building Block (ZOI RBB) describes phenomenologically the local interactions of plants. 
+Originally, it was developed by Weiner et al. (2021) [^Weiner2021] to describe competition for resources (water, nutrients, light) or space. 
 
-1. What mechanism or process does this RBB represent?
-2. What kinds of environments, systems, and research questions has this RBB been used for, or could it be relevant for? 
-   Include durable references (e.g., DOIs, permanent URLs, or other permanent identifiers) to past work.
+Since competition can be symmetric (plants share the resources equally, often assumed for nutrients) or asymmetric (larger plants get un-proportionally more resources, often assumed for light), the ZOI RBB defines the type of competition (either symmetric or asymmetric), quantifies its strength, as well as its consequences for the growth of the involved plants. 
+
+The ZOI RBB has been used in various plant population models (e.g., Weiner et al. 2001) and forest simulation models (e.g., Berger and Hildebrandt 2007, Berger et al. 2008).
+It is synonymous with so-called *Competition Indices* known from forest sciences (see, e.g., Pretzsch 2009) and belongs to the family of *Distance Models* sensu Czárán (1998). 
+It was occasionally used to describe animal interactions in agent-based models (e.g. Piou et al. 2007).
+
+The present version of the ZOI describes complete symmetric competition or complete asymmetric competition. 
+It can be easily adapted to describe competition proportional to the size ratio of the involved plants or to describe positive local interactions (facilitation, e.g., Lin et al. 2012) resulting from the presence of neighbouring plants that  improve, e.g., the microclimate. 
+
+[^Weiner2021]: Weiner et al. 2021: The Effects of Density, Spatial Pattern, and Competitive Symmetry on Size Variation in Simulated Plant Populations
 
 ## Narrative Documentation
 
