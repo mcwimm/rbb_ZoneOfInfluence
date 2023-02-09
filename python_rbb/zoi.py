@@ -1,4 +1,5 @@
 import numpy as np
+import random
 
 
 class ZoneOfInfluence:
@@ -28,38 +29,62 @@ class ZoneOfInfluence:
     def setEffectiveArea(self, positions, zoi_radii):
         agent_x = positions[:, 0]
         agent_y = positions[:, 1]
+        self.agent_n = len(agent_x)
 
         # Numpy array of shape [res_x, res_y, n_agents]
+        # Distance of all nodes to each tree
         self.distance = (((self.grid[0][:, :, np.newaxis] -
                       np.array(agent_x)[np.newaxis, np.newaxis, :])**2 +
                      (self.grid[1][:, :, np.newaxis] -
                       np.array(agent_y)[np.newaxis, np.newaxis, :])**2)**0.5)
 
-        if self.type == "sym":
-            self.calculateSymZoi(zoi_radii)
+        self.zoi_radii = np.array(zoi_radii).flatten()
 
-    def calculateSymZoi(self, zoi_radii):
         # Array of shape distance [res_x, res_y, n_agents], indicating which
         # cells are occupied by agents zoi
-        zoi_radii = np.array(zoi_radii).flatten()
-        agents_present = zoi_radii[np.newaxis, np.newaxis, :] > self.distance
+        self.agents_present = self.zoi_radii[np.newaxis, np.newaxis, :] > self.distance
 
+        if self.type == "sym":
+            self.calculateSymZoi()
+        elif self.type == "asym":
+            self.calculateAsymZoi()
+        else:
+            print("ERROR: Selected ZOI type not available.\n")
+            print("Available options: `sym`, `asym`")
+
+    def calculateSymZoi(self):
         # Count all nodes, which are occupied by agents
         # returns array of shape [n_agents]
         # BETTINA ODD 2017: variable 'countbelow'
-        agents_counts = agents_present.sum(axis=(0, 1))
+        agents_counts = self.agents_present.sum(axis=(0, 1))
 
         # Calculate reciprocal of cell-own variables (array to count wins)
         # BETTINA ODD 2017: variable 'compete_below'
         # [res_x, res_y]
-        agents_present_reci = 1. / agents_present.sum(axis=-1)
+        agents_present_reci = 1. / self.agents_present.sum(axis=-1)
 
         # Sum up wins of each agent = agents_present_reci[agent]
-        n_agents = len(agents_present[0, 0, :])
+        n_agents = len(self.agents_present[0, 0, :])
         agents_wins = np.zeros(n_agents)
         for i in range(n_agents):
             agents_wins[i] = np.sum(agents_present_reci[np.where(
-                agents_present[:, :, i])])
+                self.agents_present[:, :, i])])
+
+        self.effective_area = agents_wins / agents_counts
+
+    def calculateAsymZoi(self):
+        agents_counts = self.agents_present.sum(axis=(0, 1))
+
+        agents_wins = np.zeros(self.agent_n)
+        for xv in range(len(self.grid[0])):
+            for yv in range(len(self.grid[1])):
+                cells = self.agents_present[xv, yv, :]
+                if any(cells):
+                    bools = self.zoi_radii == max(self.zoi_radii[cells])
+                    if np.count_nonzero(bools) != 1:
+                        pos_bools = [i for i, x in enumerate(bools) if x]
+                        bools = random.sample(pos_bools, 1)
+                    agents_wins[bools] += 1
 
         self.effective_area = agents_wins / agents_counts
 
