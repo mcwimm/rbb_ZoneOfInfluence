@@ -1,20 +1,20 @@
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import pandas as pd
-
+import numpy
 
 class Visualization:
     def __init__(self, file='TreeGrowthModel/output.txt'):
         data = pd.read_csv(file, sep=', ', header=0)
         self.data = pd.DataFrame(data)
 
-    def getZOIPlot(self):
+    def getZOIPlot(self, major_ticks_x=None, major_ticks_y=None):
         xx = self.data['x']
         yy = self.data['y']
         cc = self.data['timestep']
         colors = [cm.jet(color) for color in cc]  # gets the RGBA values from a float
 
-        sizes = self.data['root_radii']
+        sizes = self.data['zoi_radii']
 
         plt.figure()
         ax = plt.gca()
@@ -33,6 +33,12 @@ class Visualization:
         plt.grid()
         plt.colorbar(label="Time step")
         plt.clim(0, max(cc))
+
+        if major_ticks_x is not None:
+            import numpy as np
+            ax.set_xticks(major_ticks_x)
+            ax.set_yticks(major_ticks_y)
+            plt.grid(which="major", alpha=0.5)
         plt.show()
 
     def getBiomassPlot(self):

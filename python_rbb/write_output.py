@@ -4,7 +4,7 @@ class WriteOutput:
         # Write output
         print(file_name + '.txt')
         self.output_file = open(file_name + '.txt', 'w')
-        self.output_file.write("timestep, tree, x, y, biomass_act, growth_rates, root_radii, effective_area\n")
+        self.output_file.write("timestep, tree, x, y, biomass_act, growth_rates, zoi_radii, effective_area\n")
 
     def writeOutput(self, timestep, trees, effective_areas):
         # Write output
