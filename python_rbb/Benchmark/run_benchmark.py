@@ -35,7 +35,7 @@ zoi.setEffectiveArea(positions=np.array(positions),
 ef_area_1a = zoi.getEffectiveArea()
 print(ef_area_1a)
 
-# Initialize ZOI with symmetric ZOI
+# Initialize ZOI with asymmetric ZOI
 # and a low grid resolution
 zoi = ZoneOfInfluence(l_x=15, l_y=15,
                       r_x=5, r_y=5,
@@ -62,7 +62,7 @@ zoi.setEffectiveArea(positions=np.array(positions),
 ef_area_1c = zoi.getEffectiveArea()
 print(ef_area_1c)
 
-# Initialize ZOI with symmetric ZOI
+# Initialize ZOI with asymmetric ZOI
 # and a high grid resolution
 zoi = ZoneOfInfluence(l_x=15, l_y=15,
                       r_x=15, r_y=15,

@@ -8,7 +8,7 @@ to zoi-asym
   if nbsh > nbtot [show "problemmmmmm!!!!"]
   ifelse nbsh = 0
   [ set Ae 0 ]
-  [ set Ae ( B ^ (2 / 3) ) * nbsh / nbtot ]
+  [ set Ae Ae * nbsh / nbtot ]
 end
 
 to attribute-grids
@@ -36,7 +36,7 @@ end
 to zoi-sym
   let nbtot (count patches in-radius (size / 2))
   let nbsh  (sum ([nb-sharing] of patches in-radius (size / 2)))
-  set Ae ( B ^ (2 / 3) ) * nbsh / nbtot
+  set Ae Ae * nbsh / nbtot
 end
 
 to share-grids
