@@ -21,7 +21,7 @@ import matplotlib.pyplot as plt
 # Read positions and zoi radii from input file
 setup_1 = pd.read_csv('setup_1.txt', sep=', ', header=0)
 positions = setup_1[['x', 'y']]
-radii = setup_1[['zoi_radii']]
+radii = setup_1['zoi_radii']
 
 # Initialize ZOI with symmetric ZOI
 # and a low grid resolution
@@ -81,8 +81,9 @@ plot.getZOIPlot(np.arange(0.5, 15, 1), np.arange(0.5, 15, 1))
 ef_area = [ef_area_1a, ef_area_1b, ef_area_1c, ef_area_1d]
 ef_lab = ["a", "b", "c", "d"]
 output_file = open('setup_1_reference.txt', 'w')
-output_file.write("setup, tree, effective_area\n")
+output_file.write("setup, tree, x, y, zoi_radii, effective_area\n")
 for i in range(4):
     for j in range(0, len(ef_area_1a)):
-        string = ef_lab[i] + ", " + str(j) + ", " + str(ef_area[i][j]) + "\n"
+        string = ef_lab[i] + ", " + str(j) + ", " + str(positions['x'][j]) + ", " + str(positions['y'][j]) + ", " + \
+                 str(radii[j]) + ", " + str(ef_area[i][j]) + "\n"
         output_file.write(string)
