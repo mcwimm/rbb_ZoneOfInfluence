@@ -166,7 +166,7 @@ The subprocedure **ZOI_asym** then counts the ratio between *# of cells with own
 In case of symmetric competition, **share_grid** counts the # of plants those ZOIs overlap a certain cell. 
 The reciproe *1 / # of owning plants* is assigned to the subprocedure **ZOI_sym** which uses the ratio *part of cells which can be used : # of all cells covered by the ZOI* for calculating $A_e$.
 
-![](/figs/zoi_flowchart.png)
+![](https://github.com/mcwimm/rbb_ZoneOfInfluence/blob/master/figs/zoi_flowchart.png)
 
 ### Source Code
 
@@ -215,7 +215,7 @@ The shapes of the distributions are also quite easy to compare among simulation 
 With the help of the behavior space analysis of NetLogo it is possible to produce relatively quickly some results showing further comparisons between parameterizations. For example, in figure 1, the biomass distributions are presented as in the histograms of Weiner et al. (with log scale) but at time step = 30 and with three densities.
 It illustrates the differences among simulation settings in spread of sizes and direction of the skewness.
 
-![](/figs/zoi_analysis_nl.jpg)
+![](https://github.com/mcwimm/rbb_ZoneOfInfluence/blob/master/figs/zoi_analysis_nl.jpg)
 _Figure 1. Histograms of biomass distributions of individual plants after 30 time steps with different simulation settings (results are out of all individual sizes of 30 replicates with identical settings, thus the high frequency numbers); the columns of histograms correspond to different densities (100, 506 and 992 individuals in the simulation area); the rows presents different spatial configurations (random or uniform (hexagonal packing) distributions) and different competition regimes (asymmetric or symmetric)._
 
 ## Use history
