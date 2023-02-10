@@ -1,0 +1,45 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; asymmetrical competition calculation of effective area  ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+to zoi-asym
+  let nbtot (count patches in-radius (size / 2))
+  let nbsh  (count patches in-radius (size / 2) with [nb-sharing = [who] of myself])
+  if nbsh > nbtot [show "problemmmmmm!!!!"]
+  ifelse nbsh = 0
+  [ set Ae 0 ]
+  [ set Ae ( B ^ (2 / 3) ) * nbsh / nbtot ]
+end
+
+to attribute-grids
+  ask patches in-radius (size / 2)
+  [
+    ifelse nb-sharing = 10000
+    [
+      set nb-sharing [who] of myself
+    ]
+    [
+      ifelse ([size] of turtle (nb-sharing)) > [size] of myself
+      [
+        ;;do nothing
+      ]
+      [
+        set nb-sharing [who] of myself
+      ]
+    ]
+  ]
+end
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; symmetrical competition calculation of effective area  ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+to zoi-sym
+  let nbtot (count patches in-radius (size / 2))
+  let nbsh  (sum ([nb-sharing] of patches in-radius (size / 2)))
+  set Ae ( B ^ (2 / 3) ) * nbsh / nbtot
+end
+
+to share-grids
+  ask patches in-radius (size / 2)
+  [set nb-sharing nb-sharing + 1]
+end
