@@ -24,7 +24,14 @@ to attribute-grids
         ;;do nothing
       ]
       [
-        set nb-sharing [who] of myself
+        ifelse ([size] of turtle (nb-sharing)) = [size] of myself ; very special case of exactly same size
+        [
+          let rf random-float 1
+          if rf > 0.5 [set nb-sharing [who] of myself]
+        ]
+        [
+          set nb-sharing [who] of myself
+        ]
       ]
     ]
   ]
