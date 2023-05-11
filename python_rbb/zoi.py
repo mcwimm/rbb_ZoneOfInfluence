@@ -5,6 +5,7 @@ import random
 class ZoneOfInfluence:
     def __init__(self, l_x, l_y, r_x, r_y, type="sym"):
         self.type = type
+        self.zoi_factor = None
         self.effective_area = None
         self.makeGrid(l_x, l_y, r_x, r_y)
         print("Initialize ZOI of type " + self.type)
@@ -52,6 +53,8 @@ class ZoneOfInfluence:
             print("ERROR: Selected ZOI type not available.\n")
             print("Available options: `sym`, `asym`")
 
+        self.effective_area = self.zoi_factor * np.pi * self.zoi_radii**2
+
     def calculateSymZoi(self):
         # Count all nodes, which are occupied by agents
         # returns array of shape [n_agents]
@@ -70,7 +73,7 @@ class ZoneOfInfluence:
             agents_wins[i] = np.sum(agents_present_reci[np.where(
                 self.agents_present[:, :, i])])
 
-        self.effective_area = agents_wins / agents_counts
+        self.zoi_factor = agents_wins / agents_counts
 
     def calculateAsymZoi(self):
         agents_counts = self.agents_present.sum(axis=(0, 1))
@@ -86,10 +89,11 @@ class ZoneOfInfluence:
                         bools = random.sample(pos_bools, 1)
                     agents_wins[bools] += 1
 
-        self.effective_area = agents_wins / agents_counts
+        self.zoi_factor = agents_wins / agents_counts
 
     def getEffectiveArea(self):
         return self.effective_area
 
-
+    def getZOIfactor(self):
+        return self.zoi_factor
 
