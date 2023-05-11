@@ -62,11 +62,11 @@ In the following we use the term `plant`*
 + What parameters does the RBB use? Preferably a table including parameter name, meaning, default value, range, and unit (if applicable). 
   + The NetLogo RBB implementation uses the following variables: 
 
-| name       | meaning | units | typical ranges | 
-|------------| -------- | -------- | -------- | 
-| nb-sharing | State variable of cells. Specifies the # of plants using a certain cell. | counts | 0 .. max # of plants|
-| nb-tot     | Total # of cells occupied by the focal plant. | counts | 1 .. $A_{ZOI} / Size_{cell}$)|
-| nbsh       | # of cells wich can actually be used by the focal plant. | counts | 0 .. |
+| name       | meaning | units | typical ranges                | 
+|------------| -------- | -------- |-------------------------------| 
+| nb-sharing | State variable of cells. Specifies the # of plants using a certain cell. | counts | 0 .. max # of plants          |
+| nb-tot     | Total # of cells occupied by the focal plant. | counts | 1 .. $A_{ZOI} / Size_{cell}$) |
+| nbsh       | # of cells wich can actually be used by the focal plant. | counts | 0 .. max # of cells           |
 
   + The Python RBB implementation uses the following variables: 
 
@@ -79,7 +79,7 @@ In the following we use the term `plant`*
 ### Patterns and data to determine parameters and/or to claim that the RBB is realistic enough for its purpose
 
 - Patterns and data are not available for the RBB itself but for the RBB integrated a plant growth model.
-- Patterns: biomass distribution, size distribution of dying plants 
+- Patterns that can be used for calibration: biomass distribution, size distribution of dying plants 
 
 - Are pre-existing datasets available to users already exist (references)?
   + There is a long tradition of calibrating the ZOI parameter in plant ecology and forest sciences. Examples are:
@@ -202,7 +202,7 @@ The ZOI concept were successfully used in several model implementations:
 
 ## 15. A manual and/or tutorial, in particular for more complex  RBBs
 
-None available.
+-
 
 ## 16. Relationship to other RBBs
 
