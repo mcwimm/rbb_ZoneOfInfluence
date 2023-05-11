@@ -147,11 +147,19 @@ Program code for the [NetLogo](https://github.com/mcwimm/rbb_ZoneOfInfluence/tre
 
 We provide a synthetic benchmark consisting of only 5 individuals (e.g., trees) with different sizes.
 The individuals are positioned in order to trigger critical points: 1 tree is completely covered, 1 is not covered at all, 1 is partly covered and 2 have exactly same size.
-This setup is calculated with the two types of ZOI (i.e., symmetric and asymmetric) as well as with different resolutions of the grid system.
+The size and position of those trees can be found [here](https://github.com/mcwimm/rbb_ZoneOfInfluence/blob/master/python_rbb/Benchmark/setup_1.txt).
 
-The figure below shows the results with A) low grid resolution and B) high grid resolution.
+This setup is calculated with the two types of ZOI (i.e., symmetric vs. asymmetric) as well as with two different resolutions of the grid system (i.e. low vs. high).
+
+The figure below shows the results with A) low and B) high grid resolution.
+To run the benchmark with the python implementation open and run the file ['run_benchmark.py'](https://github.com/mcwimm/rbb_ZoneOfInfluence/blob/master/python_rbb/Benchmark/run_benchmark.py).
 
 ![](https://github.com/mcwimm/rbb_ZoneOfInfluence/blob/master/figs/zoi_benchmark.jpg)
+
+_Figure: Results of the benchmark shown as top view on plants (represented as circles). 
+The size of circles represents the size of the ZOI and the color represents the ZOI factor, i.e., the ratio of effective to total area occupied by each plant.
+Red grid lines indicate the grid resolution which is 3x3m in (A) and 1x1m in (B)._
+
 
 ## 10. Version control [_*_]
 
@@ -180,7 +188,7 @@ With the help of the behavior space analysis of NetLogo it is possible to produc
 It illustrates the differences among simulation settings in spread of sizes and direction of the skewness.
 
 ![](https://github.com/mcwimm/rbb_ZoneOfInfluence/blob/master/figs/zoi_analysis_nl.jpg)
-_Figure 1. Histograms of biomass distributions of individual plants after 30 time steps with different simulation settings (results are out of all individual sizes of 30 replicates with identical settings, thus the high frequency numbers); the columns of histograms correspond to different densities (100, 506 and 992 individuals in the simulation area); the rows presents different spatial configurations (random or uniform (hexagonal packing) distributions) and different competition regimes (asymmetric or symmetric)._
+_Figure: Histograms of biomass distributions of individual plants after 30 time steps with different simulation settings (results are out of all individual sizes of 30 replicates with identical settings, thus the high frequency numbers); the columns of histograms correspond to different densities (100, 506 and 992 individuals in the simulation area); the rows presents different spatial configurations (random or uniform (hexagonal packing) distributions) and different competition regimes (asymmetric or symmetric)._
 
 ## 14. Use history
 
