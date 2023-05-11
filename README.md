@@ -16,7 +16,7 @@ competition, ecology, interaction, neighborhood, plants
 The Zone-Of-Influence Reusable Building Block (ZOI RBB) was originally developed by Weiner et al. (2021) [^Weiner2021] to describe competition between plants for resources (water, nutrients, light) or space phenomenologically.
 Since competition can be symmetric (plants share the resources equally, often assumed for nutrients) or asymmetric (larger plants get un-proportionally more resources, often assumed for light), the ZOI RBB defines the type of competition (either symmetric or asymmetric), quantifies its strength, as well as its consequences for the growth of the involved plants. 
 
-The ZOI RBB has been used in various plant population models (e.g., Weiner et al. 2001[^Weiner2021]) and forest simulation models (e.g., Berger and Hildebrandt 2007[^Berger2007], Berger et al. 2008[^Berger2008]).
+The ZOI RBB has been used in various plant population models (e.g., Weiner et al. 2001[^Weiner2021]) and forest simulation models (e.g., Berger et al. 2008[^Berger2008]).
 It is synonymous with so-called *Competition Indices* known from forest sciences (see, e.g., Pretzsch 2009[Pretzsch^2009]) and belongs to the family of *Distance Models* sensu Czárán (1998)[^Czaran1998]. 
 It was occasionally used to describe animal interactions in agent-based models (e.g. Piou et al. 2007[^Piou2007]).
 
@@ -38,33 +38,35 @@ The amount of resources a plant can exploit is thus equal to the number of cells
 ## 6. An overview of the RBB and its use [_*_]
 
 *Note: Agents in the ZOI are usually plants but can also represent other individuals such as animals. 
-In the following we use the term `plant`* :question:
+In the following we use the term `plant`*
 
 ### Entity
 
-- What entity, or entities, are running the submodel or are involved (e.g., by providing information)? What state variables does the entity need to have to run this RBB? 
+- What entity, or entities, are running the submodel or are involved (e.g., by providing information)? 
   - The agents calling on the ZOI RBB are individual plants.
-  - An individual plant is defined by a circular zone (hence the name Zone Of Influence - ZOI) which scales with it's biomass proxy (e.g., dbh). 
-  - The radius of this zone is a state variable and used in the ZOI RBB.
-- Which variables describe the entities?
-  - Initial and maximum biomass (average and sd)  :question: biomass proxy, e.g. dbh
+- What state variables does the entity need to have to run this RBB? 
+  - The radius of the zone of influence and the effective area are state variables and used in the ZOI RBB.
+- Which other variables describe the entities?
   - Growth rate
+  - Biomass (or a proxy of such)
 
-### Context, model parameters & patterns :question:
+
+### Context, model parameters & patterns
 
 + What global variables (e.g., parameters characterising the environment) or data structures (e.g., a gridded spatial environment) does the use of the RBB require?
   + The plants compete for the occupied cells of a grid (the ones they overlap with their ZOI). Hence, the simulated world need to be defined with grid cells.
-+ Does the RBB directly affect global variables or data structures? :question:
++ Does the RBB directly affect global variables or data structures?
   + The RBB counts the number of agents sharing a similar cell. For implementation purpose, it may affect temporary variable storing for each cell the IDs of sharing agents, or their number.
   + In the Python implementation, the counts are based on cell nodes.
+  + The RBB influences the plant biomass.
 + What parameters does the RBB use? Preferably a table including parameter name, meaning, default value, range, and unit (if applicable). 
   + The NetLogo RBB implementation uses the following variables: 
 
-| name | meaning | units | typical ranges | 
-| -------- | -------- | -------- | -------- | 
-| nb-sharing     | State variable of cells. Specifies the # of plants using a certain cell. | counts | 0 .. max # of plants|
+| name       | meaning | units | typical ranges | 
+|------------| -------- | -------- | -------- | 
+| nb-sharing | State variable of cells. Specifies the # of plants using a certain cell. | counts | 0 .. max # of plants|
 | nb-tot     | Total # of cells occupied by the focal plant. | counts | 1 .. $A_{ZOI} / Size_{cell}$)|
-| nbsh     | # of cells wich can actually be used by the focal plant. | counts | 0 .. |
+| nbsh       | # of cells wich can actually be used by the focal plant. | counts | 0 .. |
 
   + The Python RBB implementation uses the following variables: 
 
@@ -74,12 +76,12 @@ In the following we use the term `plant`* :question:
 | agents_counts | Total # of nodes (cell junctions) occupied by the focal plant.            | counts | 1 .. max # of nodes) |
 | agents_wins      | # of nodes wich can actually be used by the focal plant.                  | counts | 0 .. max # of nodes            |
 
-### Patterns and data to determine parameters and/or to claim that the RBB is realistic enough for its purpose: :question:
+### Patterns and data to determine parameters and/or to claim that the RBB is realistic enough for its purpose
 
-+ Which of the variables (or parameters) can be set independent of the model/RBB, using direct measurement, other models (e.g., regression), etc.? 
-+ Which variables or parameters can only be estimated within the context of the model or require calibration?
-+ Which data or patterns can be used for calibration?
-+ Are pre-existing datasets available to users already exist (references)?
+- Patterns and data are not available for the RBB itself but for the RBB integrated a plant growth model.
+- Patterns: biomass distribution, size distribution of dying plants 
+
+- Are pre-existing datasets available to users already exist (references)?
   + There is a long tradition of calibrating the ZOI parameter in plant ecology and forest sciences. Examples are:
     + Stoll, P., Weiner, J., 2000. A neighborhood view of interactions among individual plants. In: Dieckmann, U., Law, R., Metz, J.A.J. (Eds.), The Geometry of Ecological Interactions: Simplifying Spatial Complexity. Cambridge University Press, Cambridge, UK, pp. 11–27
     + Lin, Y., Huth, F., Berger, U., & Grimm, V. (2014). The role of belowground competition and plastic biomass allocation in altering plant mass-density relationships. Oikos, 123(2), 248–256. Retrieved from http://doi.wiley.com/10.1111/j.1600-0706.2013.00921.x: data from greenhouse experiments using birch seedlings
@@ -88,10 +90,10 @@ In the following we use the term `plant`* :question:
 ### Interface - A list of all inputs and outputs of the RBB [_*_]
 #### Inputs
 
-| Input | Unit |
-| -------- | -------- |
-| x,y-position of agent     | none     |
-| size of ZOI     | length     |
+| Input                 | Unit   |
+|-----------------------|--------|
+| x,y-position of agent | length |
+| radius of ZOI         | length |
 
 Additional input of NetLogo implementation
 
@@ -101,24 +103,24 @@ Additional input of NetLogo implementation
 
 #### Outputs
 
-| Output | Unit |
-| -------- | -------- |
-| effective area     | %     |
+| Output         | Unit     |
+|----------------|----------|
+| ZOI_factor     | ratio    |
+| Effective area | length^2 |
  
- The RBB provides the *effective area* $A_e$. This can be used as a modification factor for the growth function. 
- 
-### Scales [_*_]:  :question: 
+The ZOI_factor is a modification factor for the *effective area* $A_e$.
+This factor is the ratio of shared to total number of cells below a plant.
+
+### Scales [_*_]:
 
 Both the spatial and the temporal scales are artificial and can be related to the particular plant system. 
 
-:question: The accuracy of the RBB depends on the number of cells. 
+The accuracy of the RBB depends on the number of cells. 
 The higher the resolution the better the estimate of the effective area.
-
-:question: A typical spatial scale would be 500 cells X 500 cells. A typical time step could refer to one day.
 
 ## 7. Pseudocode, a Flowchart or other type of graphical representation [_*_] 
 
-:question: *Note: The following description follows the implementation within the NetLogo framework.*
+*Note: The following description follows the implementation within the NetLogo framework.*
 
 Plants with overlapping ZOIs are neighbours and compete for cells within the overlapping area. 
 Its size $Size_{ZOI_{overlap}}$ thus describes phenomenologically the strength of competition, which can be symmetric (plants share the resources inside the overlapping area equally) or asymmetric (the larger plants get all resources in the overlapping area). 
@@ -134,10 +136,11 @@ The reciproe *1 / # of owning plants* is assigned to the subprocedure **ZOI_sym*
 
 Program code for the [NetLogo](https://github.com/mcwimm/rbb_ZoneOfInfluence/tree/master/netlogo_rbb) and [Python](https://github.com/mcwimm/rbb_ZoneOfInfluence/tree/master/python_rbb) implementations can be found in te respective folders.
 
-*	Information on the programming language, operating system, development environments incl. any required software package or library, version etc.  [_*_]. 
-  * NetLogo: :question:
+* Information on the programming language, operating system, development environments incl. any required software package or library, version etc.  [_*_]. 
+  * NetLogo:
+    * NetLogo 6.3.0 (tested on Mac and Windows)
   * Python: 
-    * developed and tested with Python 3.7
+    * developed and tested with Python 3.7 (tested on Windows)
     * Python packages: numpy (for mathematical operations) and random (for generation of random numbers)
 
 ## 9. Example analyses of a simulation output, test cases and benchmarks [_*_]
@@ -156,15 +159,13 @@ We use GitHub for version control.
 
 ## 11. Status info
 
-*	Peer Review: yes/no. In case of a double open reviewing process, the name(s) of the reviewer(s) could be provided. This would increase the transparency of the process and acknowledge the effort of the reviewer for the ABM community. 
-*	Licence (if relevant): For example, GNU Lesser General Public Licence, General Public License (GPL) etc.
-*   - CC-BY-NC-SA-4.0 :question:
+*	Peer Review: no
+*	Licence (if relevant): Creative Commons Attribution Non Commercial Share Alike 4.0 International (CC-BY-NC-SA-4.0)
 
 
-## 12. Citation of the RBB :question:
+## 12. Citation of the RBB 
 
-Cyril Piou, Marie-Christin Wimmler, Uta Berger (2023). “Modeling local plant interactions with the Zone-Of_Influence Reusable Building Block” (Version X.X.X). e.g., CoMSES Computational Model Library. Retrieved from
-
+-
 
 ## 13. Example implementation of the RBB to demonstrate its use
 
@@ -193,20 +194,18 @@ The ZOI concept were successfully used in several model implementations:
 
 ## 15. A manual and/or tutorial, in particular for more complex  RBBs
 
-None available. :question:
+None available.
 
 ## 16. Relationship to other RBBs
 
-The Field-Of-Neighbourhood (FON), which describes competition or facilitation among 
-neighbouring plants, is an extension of the Zone-of-Influence (ZOI).
+The Field-Of-Neighbourhood (FON), which describes competition or facilitation among neighbouring plants, is an extension of the Zone-of-Influence (ZOI).
 
 ## 17. References 
 
 [^Weiner2021]: Weiner J, Stoll P, Muller-Landau H, Jasentuliyana A (2021): The Effects of Density, Spatial Pattern, and Competitive Symmetry on Size Variation in Simulated Plant Populations
-[^Berger2007]: Berger, Hildebrandt 2007 :question: Berger, U. & Hildenbrandt, H. (2000): A new approach to spatially explicit modelling of forest dynamics: spacing, ageing and neighbourhood competition of mangrove trees. Ecological Modelling, 132, 287-302.
-[^Berger2008]: Berger 2008 :question: Berger, U., Piou, C., Schiffers, K., Grimm, V. (2008): Competition among plants: Concepts, individual-based modelling approaches, and a proposal for a future research strategy. Perspectives in Plant Ecology, Evolution and Systematics.  9: 121-135
-[^Pretzsch2009]: Pretzsch 2009 :question: Buch Forest Dynamics, Growth and Yield
-[^Czaran1998]: Czárán (1998) :question: Czárán, Tamás. Spatiotemporal models of population and community dynamics. Vol. 21. Springer Science & Business Media, 1998.
+[^Berger2008]: Berger U, Piou C, Schiffers K, Grimm V (2008): Competition among plants: Concepts, individual-based modelling approaches, and a proposal for a future research strategy. Perspectives in Plant Ecology, Evolution and Systematics.  9: 121-135
+[^Pretzsch2009]: Pretzsch (2009): Forest Dynamics, Growth and Yield - From Measurement to Model. Springer Berlin (Verlag).
+[^Czaran1998]: Czárán T (1998): Spatiotemporal models of population and community dynamics. Vol. 21. Springer Science & Business Media, 1998.
 [^Piou2007]: Piou C, Berger U, Hildenbrandt H, Grimm V, Diele K, D’Lima C (2007): Simulating cryptic movements of a mangrove crab: recovery phenomena after small scale fishery. Ecological Modelling. 205: 110-122
 [^Lin2012]: Lin Y, Berger U, Grimm V, Ji Q-R (2012): Differences between symmetric and asymmetric facilitation matter: exploring the interplay between modes of positive and negative plant interactions. Journal of Ecology.
 
