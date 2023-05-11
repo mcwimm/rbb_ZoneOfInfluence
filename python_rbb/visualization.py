@@ -8,10 +8,10 @@ class Visualization:
         data = pd.read_csv(file, sep=', ', header=0)
         self.data = pd.DataFrame(data)
 
-    def getZOIPlot(self, major_ticks_x=None, major_ticks_y=None):
+    def getZOIPlot(self, major_ticks_x=None, major_ticks_y=None, color_l='timestep'):
         xx = self.data['x']
         yy = self.data['y']
-        cc = self.data['timestep']
+        cc = self.data[color_l]
         colors = [cm.jet(color) for color in cc]  # gets the RGBA values from a float
 
         sizes = self.data['zoi_radii']
@@ -31,7 +31,7 @@ class Visualization:
         plt.scatter(xx, yy,
                     s=0, cmap='jet', facecolors='none')
         plt.grid()
-        plt.colorbar(label="Time step")
+        plt.colorbar(label=color_l)
         plt.clim(0, max(cc))
 
         if major_ticks_x is not None:
@@ -54,7 +54,7 @@ class Visualization:
         plt.gca().legend((self.data['tree'].unique()))
         plt.show()
 
-    def getEffectiveArea(self):
+    def getEffectiveAreaPlot(self):
         fig = plt.figure(figsize=(10, 5))
         ax = fig.add_subplot(111)
         for unq_value in self.data['tree'].unique():
