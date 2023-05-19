@@ -11,9 +11,9 @@ from write_output import WriteOutput
 from visualization import Visualization
 from tree_growth_model import TreeModel
 
-timesteps = 1000
-world_width = 10
-number_individuals = 10
+timesteps = 100
+world_width = 30
+number_individuals = 100
 filename_output = "output"
 
 trees = TreeModel(world_width=world_width,
@@ -32,7 +32,9 @@ for timestep in range(1, timesteps+1):
                          zoi_radii=trees.getRootRadii())
     effective_areas = zoi.getEffectiveArea()
 
-    trees.treeGrowth(effective_areas=effective_areas)
+    trees.setEffectiveArea(effective_areas)
+
+    trees.treeGrowth()
 
     output.writeOutput(timestep=timestep,
                        trees=trees.__dict__,
@@ -41,6 +43,7 @@ for timestep in range(1, timesteps+1):
 output.closeFile()
 
 
-# plot = Visualization(file=filename_output+'.txt')
-# plot.getZOIPlot()
-
+plot = Visualization(file=filename_output+'.txt')
+plot.getOverTimePlot(y_var="biomass_act", y_label="Actual biomass")
+plot.getOverTimePlot(y_var="growth_rates", y_label="Growth rate")
+plot.getOverTimePlot(y_var="zoi_radii", y_label="ZOI radius")

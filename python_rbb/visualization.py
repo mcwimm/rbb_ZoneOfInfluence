@@ -41,16 +41,16 @@ class Visualization:
             plt.grid(which="major", alpha=0.5)
         plt.show()
 
-    def getBiomassPlot(self):
+    def getOverTimePlot(self, y_var, y_label):
         fig = plt.figure(figsize=(10, 5))
         ax = fig.add_subplot(111)
         for unq_value in self.data['tree'].unique():
             mask = self.data['tree'] == unq_value
             df_subset = self.data[mask]
-            plt.plot(df_subset['timestep'], df_subset['biomass_act'])
+            plt.plot(df_subset['timestep'], df_subset[y_var])
 
         ax.set_xlabel('Time step')
-        ax.set_ylabel('Actual biomass')
+        ax.set_ylabel(y_label)
         plt.gca().legend((self.data['tree'].unique()))
         plt.show()
 
