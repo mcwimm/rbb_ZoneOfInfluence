@@ -9,7 +9,7 @@ parentdir = os.path.dirname(currentdir)
 sys.path.insert(0, parentdir)
 
 from zoi import ZoneOfInfluence
-from visualization import Visualization
+from Helper.visualization import Visualization
 
 
 # BENCHMARK 1
