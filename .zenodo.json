@@ -1,0 +1,36 @@
+{
+    "description": "Initial release of the zone-of-influence (ZOI) RBB including a detailed description of the concept based on the template introduced in Berger et al. (2023), code examples and benchmarks.", 
+    "license": "CC-BY-NC-SA-4.0", 
+    "title": "Zone-of-Influence (ZOI) reusable building block (RBB)", 
+    "notes": "If you use this software, please cite it using the metadata from this file.", 
+    "version": "v1.0.0", 
+    "upload_type": "software", 
+    "publication_date": "2023-05-30", 
+    "creators": [
+        {
+            "affiliation": "CIRAD, UMR CBGP, Montpellier, France", 
+            "name": "Piou, Cyril"
+        }, 
+              {
+            "affiliation": "Institute of Forest Growth and Computer Sciences, Technische Universität Dresden, Germany", 
+            "name": "Wimmler, Marie-Christin"
+        }, 
+        {
+            "affiliation": "Institute of Forest Growth and Computer Sciences, Technische Universität Dresden, Germany", 
+            "name": "Berger, Uta"
+        }, 
+    ], 
+    "access_right": "open", 
+    "related_identifiers": [
+        {
+            "scheme": "url", 
+            "identifier": "https://github.com/mcwimm/rbb_ZoneOfInfluence/tree/v1.0.0", 
+            "relation": "isSupplementTo"
+        }, 
+        {
+            "scheme": "doi", 
+            "identifier": "10.5281/zenodo.7986719", 
+            "relation": "isVersionOf"
+        }
+    ]
+}
