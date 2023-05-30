@@ -1,23 +1,15 @@
-# This CITATION.cff file was generated with cffinit.
-# Visit https://bit.ly/cffinit to generate yours today!
-
-cff-version: 1.2.0
-title: My First Fisher-Price Reusable Building Block
-message: >-
-  If you use this software, please cite it using the
-  metadata from this file.
-type: software
+cff-version: 1.1.0
+message: "If you use this software, please cite it as below."
 authors:
-  - given-names: Allen
-    family-names: Lee
-    email: allen.lee@asu.edu
-    affiliation: Arizona State University
-    orcid: 'https://orcid.org/0000-0002-6523-6079'
-  - given-names: Another
-    family-names: Collaborator
-    email: your.coauthor@mailinator.com
-    affiliation: Other Institution
-    orcid: 'https://orcid.org/0000-0001-2345-6789'
-license: MIT
-version: 1.0.0
-date-released: '2022-07-07'
+  - family-names: "Piou"
+    given-names: "Cyril"
+  - family-names: "Wimmler"
+    given-names: "Marie-Christin"
+    orcid: "https://orcid.org/0000-0002-4542-6764"
+  - family-names: "Berger"
+    given-names: "Uta"
+title: "Reusable building block: Zone-of-Influence"
+version: v1.0.0
+date-released: 2023-05-30
+doi: 10.5281/zenodo.7986720
+url: "https://github.com/mcwimm/rbb_ZoneOfInfluence"

@@ -1,5 +1,7 @@
+[![DOI](https://zenodo.org/badge/597040260.svg)](https://zenodo.org/badge/latestdoi/597040260)
+
 # Reusable Building Block
-## 1. The name of the RBB [_*_]
+## 1. The name of the RBB [_*_] 
 
 Zone-of-Influence (ZOI)
 
@@ -184,7 +186,7 @@ We use GitHub for version control.
 
 ## 12. Citation of the RBB 
 
--
+Piou, C., Wimmler, M., & Berger, U. (2023). Reusable building block: Zone-of-Influence (Version v1.0.0) [Computer software]. https://doi.org/10.5281/zenodo.7986720
 
 ## 13. Example implementation of the RBB to demonstrate its use
 
