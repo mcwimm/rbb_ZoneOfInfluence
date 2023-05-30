@@ -167,7 +167,7 @@ In NetLogo this area is a function of cells, whereas in the Python implementatio
 Another reason for differences in the calculation of the asymmetric ZOI is stochasticity.
 If two overlapping ZOIs are exactly the same size - which is very unlikely in a simulation - the "winner" is chosen randomly.
 
-![](https://github.com/mcwimm/rbb_ZoneOfInfluence/blob/master/figs/zoi_benchmark_C_D_comparison.jpg)
+![](https://github.com/mcwimm/rbb_ZoneOfInfluence/blob/master/figs/zoi_benchmark_comparison_C_D.jpg)
 
 _Figure: Comparison of ZOI factors for each tree calculated using the Python (orange) and NetLogo (green) implementations. Numbers indicate relative difference between results with NetLogo as reference scenario. Grid resolution is 1x1m._
 
