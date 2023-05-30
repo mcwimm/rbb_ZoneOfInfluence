@@ -6,6 +6,7 @@ globals
 turtles-own
 [
   Ae    ;;effective area
+  ZOI_factor ;; ratio of shared(own)/total number of grid cells under the area of a plant
   rad    ;; radius
 ]
 
@@ -65,10 +66,10 @@ end
 
 to outputs
   clear-output
-  output-print "setup, tree, x, y, zoi_radii, effective_area"
+  output-print "setup, tree, x, y, zoi_radii, ZOI_factor, effective_area"
   foreach sort turtles[ the-turtle ->
     ask the-turtle [
-      output-print (sentence asymmetric-competition ", " who ", "  xcor  ", " ycor  ", " rad  ", " Ae )
+      output-print (sentence asymmetric-competition ", " who ", "  xcor  ", " ycor  ", " rad  ", " ZOI_factor "," Ae )
     ]
   ]
 end
@@ -124,7 +125,7 @@ SWITCH
 125
 asymmetric-competition
 asymmetric-competition
-1
+0
 1
 -1000
 
@@ -480,7 +481,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.2.0
+NetLogo 6.3.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

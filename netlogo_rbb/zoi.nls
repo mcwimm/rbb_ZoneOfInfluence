@@ -7,8 +7,11 @@ to zoi-asym
   let nbsh  (count patches in-radius (size / 2) with [nb-sharing = [who] of myself])
   if nbsh > nbtot [show "problemmmmmm!!!!"]
   ifelse nbsh = 0
-  [ set Ae 0 ]
-  [ set Ae Ae * nbsh / nbtot ]
+  [ set ZOI_factor 0 ]
+  [ 
+    set ZOI_factor nbsh / nbtot
+  ]
+  set Ae ZOI_factor * Ae
 end
 
 to attribute-grids
@@ -43,7 +46,8 @@ end
 to zoi-sym
   let nbtot (count patches in-radius (size / 2))
   let nbsh  (sum ([nb-sharing] of patches in-radius (size / 2)))
-  set Ae Ae * nbsh / nbtot
+  set ZOI_factor nbsh / nbtot
+  set Ae ZOI_factor * Ae
 end
 
 to share-grids
