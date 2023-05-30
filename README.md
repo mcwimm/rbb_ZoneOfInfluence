@@ -13,10 +13,10 @@ competition, ecology, interaction, neighborhood, plants
 
 ## 4. The purpose of the RBB [_*_]
 
-The Zone-Of-Influence Reusable Building Block (ZOI RBB) was originally developed by Weiner et al. (2021) [^Weiner2021] to describe competition between plants for resources (water, nutrients, light) or space phenomenologically.
+The Zone-Of-Influence Reusable Building Block (ZOI RBB) was originally developed by Weiner et al. (2001) [^Weiner2001] to describe competition between plants for resources (water, nutrients, light) or space phenomenologically.
 Since competition can be symmetric (plants share the resources equally, often assumed for nutrients) or asymmetric (larger plants get un-proportionally more resources, often assumed for light), the ZOI RBB defines the type of competition (either symmetric or asymmetric), quantifies its strength, as well as its consequences for the growth of the involved plants. 
 
-The ZOI RBB has been used in various plant population models (e.g., Weiner et al. 2001[^Weiner2021]) and forest simulation models (e.g., Berger et al. 2008[^Berger2008]).
+The ZOI RBB has been used in various plant population models (e.g., Weiner et al. 2001[^Weiner2001]) and forest simulation models (e.g., Berger et al. 2008[^Berger2008]).
 It is synonymous with so-called *Competition Indices* known from forest sciences (see, e.g., Pretzsch 2009[Pretzsch^2009]) and belongs to the family of *Distance Models* sensu Czárán (1998)[^Czaran1998]. 
 It was occasionally used to describe animal interactions in agent-based models (e.g. Piou et al. 2007[^Piou2007]).
 
@@ -221,7 +221,7 @@ The Field-Of-Neighbourhood (FON), which describes competition or facilitation am
 
 ## 17. References 
 
-[^Weiner2021]: Weiner J, Stoll P, Muller-Landau H, Jasentuliyana A (2021): The Effects of Density, Spatial Pattern, and Competitive Symmetry on Size Variation in Simulated Plant Populations
+[^Weiner2001]: Weiner J, Stoll P, Muller-Landau H, Jasentuliyana A (2001): The Effects of Density, Spatial Pattern, and Competitive Symmetry on Size Variation in Simulated Plant Populations
 [^Berger2008]: Berger U, Piou C, Schiffers K, Grimm V (2008): Competition among plants: Concepts, individual-based modelling approaches, and a proposal for a future research strategy. Perspectives in Plant Ecology, Evolution and Systematics.  9: 121-135
 [^Pretzsch2009]: Pretzsch (2009): Forest Dynamics, Growth and Yield - From Measurement to Model. Springer Berlin (Verlag).
 [^Czaran1998]: Czárán T (1998): Spatiotemporal models of population and community dynamics. Vol. 21. Springer Science & Business Media, 1998.
