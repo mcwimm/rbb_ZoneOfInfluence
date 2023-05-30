@@ -161,6 +161,17 @@ The size of circles represents the size of the ZOI and the color represents the 
 Red grid lines indicate the grid resolution which is 3x3m in (A) and 1x1m in (B)._
 
 
+The implementation of the ZOI RBB in different languages can lead to slightly different results, as shown below.
+One reason for this is the different implementation of the grid system and thus the calculation of the area occupied by a plant.
+In NetLogo this area is a function of cells, whereas in the Python implementation it is a function of nodes (intersections in the grid).
+Another reason for differences in the calculation of the asymmetric ZOI is stochasticity.
+If two overlapping ZOIs are exactly the same size - which is very unlikely in a simulation - the "winner" is chosen randomly.
+
+![](https://github.com/mcwimm/rbb_ZoneOfInfluence/blob/master/figs/zoi_benchmark_C_D_comparison.jpg)
+
+_Figure: Comparison of ZOI factors for each tree calculated using the Python (orange) and NetLogo (green) implementations. Numbers indicate relative difference between results with NetLogo as reference scenario. Grid resolution is 1x1m._
+
+
 ## 10. Version control [_*_]
 
 We use GitHub for version control.
