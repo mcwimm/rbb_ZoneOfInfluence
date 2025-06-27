@@ -1,5 +1,34 @@
+;; the source code below is a simplified code snipet of an AZOI model
+;; it describes only the assignment of the grid cell (== ressources) to the plants and how they are shared 
+;; assymmetric competition: the larger plant gets all grid cells under its ZOI even if smaller plants cover the same grid cells with their ZOI
+;; symmetric competition: shared grid cells are equally distributed among the plants which cover the same grid cells with their overlapping ZOIs
+
 ;; please cite this RBB as:
 ;; Piou, C., Wimmler, M., & Berger, U. (2023). Reusable building block: Zone-of-Influence (Version v1.0.0) [Computer software]. https://doi.org/10.5281/zenodo.7986720
+
+;This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+;This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+;A copy of the GNU General Public License can be found at http://www.gnu.org/licenses/gpl.html or write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ 
+; THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+; WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ 
+; If you want to run and test the RBB you can check out our benchmark:
+; - download the model benchmark.nlogo from here: https://github.com/mcwimm/rbb_ZoneOfInfluence/tree/master/netlogo_rbb/Benchmark
+; - download the file zoi.nls from here: https://github.com/mcwimm/rbb_ZoneOfInfluence/tree/master/netlogo_rbb
+; - store benchmark.nlogo in a folder /benchmark inside the folder containing the zoi.nls file. 
+; - open the model benchmark.nlogo in the NetLogo environment. 
+; - The zoi.nls file is the RBB used as external source file. It will be included at line 15 of the benchmark.nlogo model: __includes["../zoi.nls"]   
+; - push the SETUP buttom in the interface
+; - push the GO button in the interface
+
+
+; need to copy the code sniplet below into the code tab of the NetLogo environment. After that switch to the interface tab and
+; type in the command line "setup" and than "go". If you want to see the activity states of foragingSquadrons after the execution of the building block 
+; you can copy "[activity] of foragersquadrons" into the command line.
+; if you are interested in the percentage of honey bees still resting you can copy "count foragersquadrons with [activity = "resting"] / count foragersquadrons" 
+; into the command line” 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; asymmetrical competition calculation of effective area  ;;
