@@ -1,7 +1,3 @@
-;; please cite this RBB as:
-;; Piou, C., Wimmler, M., & Berger, U. (2023). Reusable building block: Zone-of-Influence (Version v1.0.0) [Computer software]. https://doi.org/10.5281/zenodo.7986720
-
-
 globals
 [
   ; parameters for the initialisation of individuals
